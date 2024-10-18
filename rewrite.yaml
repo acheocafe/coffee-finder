@@ -1,0 +1,12 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.AllRecipeList
+displayName: coffee-finder
+description: ""
+recipeList:
+  - org.openrewrite.java.spring.boot3.SpringBoot3BestPractices
+  - org.openrewrite.java.testing.junit5.JUnit5BestPractices
+  - org.openrewrite.java.testing.mockito.MockitoBestPractices
+  - org.openrewrite.java.format.AutoFormat
+  - org.openrewrite.java.format.NormalizeFormat
+styleConfigs:
+  -org.openrewrite.java.SpringFormat
