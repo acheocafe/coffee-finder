@@ -1,0 +1,13 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.yourorg.SayHelloToFooBar
+displayName: coffee-finder
+description: " apply a list of sectioned list"
+recipeList:
+  - org.openrewrite.java.spring.boot3.SpringBoot3BestPractices
+  - org.openrewrite.java.testing.junit5.JUnit5BestPractices
+  - org.openrewrite.java.testing.mockito.MockitoBestPractices
+  - org.openrewrite.java.format.AutoFormat
+  - org.openrewrite.java.format.NormalizeFormat
+styleConfigs:
+  -org.openrewrite.java.SpringFormat
