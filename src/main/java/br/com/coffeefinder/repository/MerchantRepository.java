@@ -1,12 +1,9 @@
 package br.com.coffeefinder.repository;
 
-import br.com.coffeefinder.dto.MerchantDto;
-import br.com.coffeefinder.entity.Merchant;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
+import br.com.coffeefinder.entity.Merchant;
 
 @Repository
-public interface MerchantRepository extends JpaRepository<Merchant, Long> {
-	List<MerchantDto> findAllDtoeBy();
+public interface MerchantRepository extends ListCrudRepository<Merchant, Long> {
 }

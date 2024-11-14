@@ -1,11 +1,10 @@
 package br.com.coffeefinder.interfaces;
 
-import br.com.coffeefinder.dto.MerchantDto;
-import br.com.coffeefinder.entity.Merchant;
 import java.util.List;
+import br.com.coffeefinder.entity.Merchant;
 
 public interface MerchantService {
-	List<MerchantDto> getAllMerchants();
+	List<Merchant> getAllMerchants();
 
 	Merchant getMerchantById(Long id);
 

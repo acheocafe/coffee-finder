@@ -1,11 +1,17 @@
 package br.com.coffeefinder.controller;
 
-import br.com.coffeefinder.dto.MerchantDto;
-import br.com.coffeefinder.entity.Merchant;
-import br.com.coffeefinder.interfaces.MerchantService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.coffeefinder.entity.Merchant;
+import br.com.coffeefinder.interfaces.MerchantService;
 
 @RestController
 @RequestMapping("/api/merchants")
@@ -18,7 +24,7 @@ public class MerchantController {
 	}
 
 	@GetMapping
-	public List<MerchantDto> getAllMerchants() {
+	public List<Merchant> getAllMerchants() {
 		return merchantService.getAllMerchants();
 	}
 
