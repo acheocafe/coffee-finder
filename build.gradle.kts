@@ -14,7 +14,7 @@ java {
 }
 rewrite {
     activeRecipe("com.yourorg.SayHelloToFooBar")
-    activeStyle("org.openrewrite.java.SpringFormat")
+    activeStyle("org.openrewrite.java.GoogleJavaFormat")
 }
 configurations {
     compileOnly {
@@ -28,27 +28,31 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("org.springframework.data:spring-data-jpa:3.3.5")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("jakarta.persistence:jakarta.persistence-api:3.2.0")
+    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
-    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
     runtimeOnly("org.postgresql:postgresql")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    rewrite("org.openrewrite.recipe:rewrite-static-analysis:latest-release")
-    rewrite("org.openrewrite.recipe:rewrite-java-security:2.14.1")
-    rewrite("org.openrewrite.recipe:rewrite-spring:5.22.0")
-    rewrite("org.openrewrite.recipe:rewrite-testing-frameworks:2.21.0")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.register("bootRunDev") {
+    group = "application"
+    description = "Runs the Spring Boot application with the dev profile"
+    doFirst {
+        tasks.bootRun.configure {
+            systemProperty("spring.profiles.active", "dev")
+        }
+    }
+    finalizedBy("bootRun")
 }

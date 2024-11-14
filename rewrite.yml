@@ -9,5 +9,9 @@ recipeList:
   - org.openrewrite.java.testing.mockito.MockitoBestPractices
   - org.openrewrite.java.format.AutoFormat
   - org.openrewrite.java.format.NormalizeFormat
+  - org.openrewrite.java.format.BlankLines
+  - org.openrewrite.java.format.NormalizeTabsOrSpaces
+  - org.openrewrite.java.format.NormalizeLineBreaks
+  - org.openrewrite.java.OrderImports
 styleConfigs:
-  -org.openrewrite.java.SpringFormat
+  -org.openrewrite.java.GoogleJavaFormat
