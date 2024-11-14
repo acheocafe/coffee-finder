@@ -1,12 +1,20 @@
 package br.com.coffeefinder.entity;
 
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /** Represents a product in the application. */
 @Entity
-@Table(name = "Product")
+@Table(name = "product")
 public class Product {
 	/** The unique identifier of the product. */
 	@Id
@@ -43,7 +51,7 @@ public class Product {
 
 	/**
 	 Returns the product ID.
-	
+
 	 @return the product ID
 	*/
 	public Long getId() {
@@ -52,7 +60,7 @@ public class Product {
 
 	/**
 	 Sets the product ID.
-	
+
 	 @param productId the product ID to set
 	*/
 	public void setId(Long productId) {
@@ -61,7 +69,7 @@ public class Product {
 
 	/**
 	 Returns the name of the product.
-	
+
 	 @return the name of the product
 	*/
 	public String getName() {
@@ -70,7 +78,7 @@ public class Product {
 
 	/**
 	 Sets the name of the product.
-	
+
 	 @param name the name to set
 	*/
 	public void setName(String name) {
@@ -79,7 +87,7 @@ public class Product {
 
 	/**
 	 Returns the description of the product.
-	
+
 	 @return the description of the product
 	*/
 	public String getDescription() {
@@ -88,7 +96,7 @@ public class Product {
 
 	/**
 	 Sets the description of the product.
-	
+
 	 @param description the description to set
 	*/
 	public void setDescription(String description) {
@@ -97,7 +105,7 @@ public class Product {
 
 	/**
 	 Returns the price of the product.
-	
+
 	 @return the price of the product
 	*/
 	public BigDecimal getPrice() {
@@ -106,7 +114,7 @@ public class Product {
 
 	/**
 	 Sets the price of the product.
-	
+
 	 @param price the price to set
 	*/
 	public void setPrice(BigDecimal price) {
@@ -115,7 +123,7 @@ public class Product {
 
 	/**
 	 Returns the merchant associated with the product.
-	
+
 	 @return the merchant associated with the product
 	*/
 	public Merchant getMerchant() {
@@ -124,7 +132,7 @@ public class Product {
 
 	/**
 	 Sets the merchant associated with the product.
-	
+
 	 @param merchant the merchant to set
 	*/
 	public void setMerchant(Merchant merchant) {

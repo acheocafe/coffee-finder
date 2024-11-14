@@ -1,6 +1,14 @@
 package br.com.coffeefinder.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**
  * Represents a merchant entity in the database.
@@ -8,8 +16,8 @@ import jakarta.persistence.*;
  * @author Nathan Martins Cunha
  * @since 2024-10-23
  */
-@Entity
-@Table(name = "Merchant")
+@Entity(name = "Merchant")
+@Table(name = "merchant")
 public class Merchant {
 
 	/** Unique identifier for the merchant, automatically generated. */
@@ -21,7 +29,8 @@ public class Merchant {
 	@Column(nullable = false)
 	private String name;
 
-	/** The phone number of the merchant. */
+	/** The phone number of the merchant.**/
+
 	private String phoneNumber;
 
 	/** The email address of the merchant. */
@@ -45,7 +54,7 @@ public class Merchant {
 
 	/**
 	 The location associated with the merchant.
-	
+
 	 @see Location
 	*/
 	@ManyToOne

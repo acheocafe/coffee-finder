@@ -25,5 +25,6 @@ COPY --from=build /sql /sql
 
 EXPOSE 8080
 
+
 # Run the application
-CMD ["java", "-jar", "app.war"]
+ENTRYPOINT  java -Dspring.profiles.active=$SPRING_PROFILES_ACTIVE -jar app.war

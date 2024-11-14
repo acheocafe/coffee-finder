@@ -13,8 +13,8 @@ import jakarta.persistence.Table;
  * @author Nathan Martins Cunha
  * @since 2024-10-23
  */
-@Entity
-@Table(name = "Location")
+@Entity(name = "Location")
+@Table(name = "location")
 public class Location {
 
 	/** Unique identifier for the location. */
@@ -57,7 +57,7 @@ public class Location {
 
 	/**
 	 Returns the unique identifier of the location.
-	
+
 	 @return the location ID
 	*/
 	public Long getId() {
@@ -66,7 +66,7 @@ public class Location {
 
 	/**
 	 Sets the unique identifier of the location.
-	
+
 	 @param locationId the location ID to set
 	*/
 	public void setId(Long locationId) {
@@ -75,7 +75,7 @@ public class Location {
 
 	/**
 	 Returns the address of the location.
-	
+
 	 @return the address
 	*/
 	public String getAddress() {
@@ -84,7 +84,7 @@ public class Location {
 
 	/**
 	 Sets the address of the location.
-	
+
 	 @param address the address to set
 	*/
 	public void setAddress(String address) {
@@ -93,7 +93,7 @@ public class Location {
 
 	/**
 	 Returns the city where the location is situated.
-	
+
 	 @return the city
 	*/
 	public String getCity() {
@@ -102,7 +102,7 @@ public class Location {
 
 	/**
 	 Sets the city where the location is situated.
-	
+
 	 @param city the city to set
 	*/
 	public void setCity(String city) {
@@ -111,7 +111,7 @@ public class Location {
 
 	/**
 	 Returns the state where the location is situated.
-	
+
 	 @return the state
 	*/
 	public String getState() {
@@ -120,7 +120,7 @@ public class Location {
 
 	/**
 	 Sets the state where the location is situated.
-	
+
 	 @param state the state to set
 	*/
 	public void setState(String state) {
@@ -129,7 +129,7 @@ public class Location {
 
 	/**
 	 Returns the postal code of the location.
-	
+
 	 @return the postal code
 	*/
 	public String getPostalCode() {
@@ -138,7 +138,7 @@ public class Location {
 
 	/**
 	 Sets the postal code of the location.
-	
+
 	 @param postalCode the postal code to set
 	*/
 	public void setPostalCode(String postalCode) {
@@ -147,7 +147,7 @@ public class Location {
 
 	/**
 	 Returns the country where the location is situated.
-	
+
 	 @return the country
 	*/
 	public String getCountry() {
@@ -156,7 +156,7 @@ public class Location {
 
 	/**
 	 Sets the country where the location is situated.
-	
+
 	 @param country the country to set
 	*/
 	public void setCountry(String country) {
@@ -167,69 +167,55 @@ public class Location {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (address == null ? 0 : address.hashCode());
-		result = prime * result + (city == null ? 0 : city.hashCode());
-		result = prime * result + (country == null ? 0 : country.hashCode());
-		result = prime * result + (id == null ? 0 : id.hashCode());
-		result = prime * result + (postalCode == null ? 0 : postalCode.hashCode());
-		result = prime * result + (state == null ? 0 : state.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		return result;
 	}
 
+
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Location other = (Location) obj;
-		if (address == null) {
-			if (other.address != null) {
-				return false;
-			}
-		} else if (!address.equals(other.address)) {
-			return false;
-		}
-		if (city == null) {
-			if (other.city != null) {
-				return false;
-			}
-		} else if (!city.equals(other.city)) {
-			return false;
-		}
-		if (country == null) {
-			if (other.country != null) {
-				return false;
-			}
-		} else if (!country.equals(other.country)) {
-			return false;
-		}
 		if (id == null) {
-			if (other.id != null) {
+			if (other.id != null)
 				return false;
-			}
-		} else if (!id.equals(other.id)) {
+		} else if (!id.equals(other.id))
 			return false;
-		}
-		if (postalCode == null) {
-			if (other.postalCode != null) {
+		if (address == null) {
+			if (other.address != null)
 				return false;
-			}
-		} else if (!postalCode.equals(other.postalCode)) {
+		} else if (!address.equals(other.address))
 			return false;
-		}
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
 		if (state == null) {
-			if (other.state != null) {
+			if (other.state != null)
 				return false;
-			}
-		} else if (!state.equals(other.state)) {
+		} else if (!state.equals(other.state))
 			return false;
-		}
+		if (postalCode == null) {
+			if (other.postalCode != null)
+				return false;
+		} else if (!postalCode.equals(other.postalCode))
+			return false;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
+			return false;
 		return true;
 	}
 
