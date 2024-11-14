@@ -12,6 +12,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/coffee-finder
       - SPRING_DATASOURCE_USERNAME=myuser
       - SPRING_DATASOURCE_PASSWORD=secret
+      - SPRING_PROFILES_ACTIVE=prod
     ports:
       - "8080:8080"
 
@@ -19,7 +20,7 @@ services:
     image: postgres:latest
     container_name: db-coffee-finder
     environment:
-      - POSTGRES_DB=coffeefinder
+      - POSTGRES_DB=coffee-finder
       - POSTGRES_USER=myuser
       - POSTGRES_PASSWORD=secret
     ports:

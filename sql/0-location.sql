@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS Location;
+DROP TABLE IF EXISTS location;
 
-CREATE TABLE Location (
+CREATE TABLE location (
     id SERIAL PRIMARY KEY,
     address VARCHAR(255) NOT NULL,
     city VARCHAR(100) NOT NULL,

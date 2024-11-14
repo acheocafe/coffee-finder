@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coffee-finder
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=secret
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/coffee-finder
+      - SPRING_DATASOURCE_USERNAME=myuser
+      - SPRING_DATASOURCE_PASSWORD=secret
+      - SPRING_PROFILES_ACTIVE=dev
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres:latest
+    container_name: db-coffee-finder
+    environment:
+      - POSTGRES_DB=coffee-finder
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
