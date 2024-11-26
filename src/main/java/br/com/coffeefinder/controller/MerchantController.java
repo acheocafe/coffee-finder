@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.coffeefinder.entity.Merchant;
-import br.com.coffeefinder.interfaces.MerchantService;
+import br.com.coffeefinder.exception.MerchantNotFoundException;
+import br.com.coffeefinder.service.MerchantServiceImpl;
+import br.com.coffeefinder.service.interfaces.MerchantService;
 
 @RestController
 @RequestMapping("/api/merchants")
@@ -19,7 +21,7 @@ public class MerchantController {
 
 	private MerchantService merchantService;
 
-	public MerchantController(MerchantService merchantService) {
+	public MerchantController(MerchantServiceImpl merchantService) {
 		this.merchantService = merchantService;
 	}
 
@@ -29,17 +31,18 @@ public class MerchantController {
 	}
 
 	@GetMapping("/{id}")
-	public Merchant getMerchantById(@PathVariable Long id) {
+	public Merchant getMerchantById(@PathVariable Long id) throws MerchantNotFoundException {
 		return merchantService.getMerchantById(id);
 	}
 
 	@PostMapping
-	public Merchant createMerchant(@RequestBody Merchant merchant) {
-		return merchantService.createMerchant(merchant);
+	public ResponseEntity<Merchant> createMerchant(@RequestBody Merchant merchant) {
+		Merchant createdMerchant = merchantService.createMerchant(merchant);
+		return ResponseEntity.status(201).body(createdMerchant);
 	}
 
 	@PutMapping("/{id}")
-	public Merchant updateMerchant(@PathVariable Long id, @RequestBody Merchant merchant) {
+	public Merchant updateMerchant(@PathVariable Long id, @RequestBody Merchant merchant) throws MerchantNotFoundException {
 		merchant.setId(id);
 		return merchantService.updateMerchant(merchant);
 	}

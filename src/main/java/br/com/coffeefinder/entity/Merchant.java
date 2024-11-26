@@ -52,6 +52,10 @@ public class Merchant {
 		this.location = location;
 	}
 
+	public Merchant(Long merchantId) {
+		this.id = merchantId;
+	}
+
 	/**
 	 The location associated with the merchant.
 

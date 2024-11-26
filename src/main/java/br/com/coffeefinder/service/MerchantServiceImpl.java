@@ -3,7 +3,8 @@ package br.com.coffeefinder.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import br.com.coffeefinder.entity.Merchant;
-import br.com.coffeefinder.interfaces.MerchantService;
+import br.com.coffeefinder.exception.MerchantNotFoundException;
+import br.com.coffeefinder.service.interfaces.MerchantService;
 import br.com.coffeefinder.repository.MerchantRepository;
 
 @Service
@@ -17,7 +18,6 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 
-
 	@Override
 	public List<Merchant> getAllMerchants() {
 		return merchantRepository.findAll();
@@ -25,31 +25,30 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	@Override
-	public Merchant getMerchantById(Long id) {
-		// return merchantRepository.findByIdDTOeBy(id);
-		return null;
+	public Merchant getMerchantById(Long id) throws MerchantNotFoundException {
+		return merchantRepository.findById(id)
+					.orElseThrow(() -> new MerchantNotFoundException(id));
 	}
 
 	@Override
 	public Merchant createMerchant(Merchant merchant) {
-		// return merchantRepository.
-		return null;
+		return merchantRepository.save(merchant);
 	}
 
 	@Override
-	public Merchant updateMerchant(Merchant merchant) {
-		// Merchant existingMerchant = getMerchantById(merchant.getId());
-		// if (existingMerchant != null) {
-			// existingMerchant.setName(merchant.getName());
-			// return merchantRepository.save(existingMerchant);
-			// return new Merchant();
-		// }
+	public Merchant updateMerchant(Merchant merchant) throws MerchantNotFoundException {
+		Merchant existingMerchant = getMerchantById(merchant.getId());
+		if (existingMerchant != null) {
+			existingMerchant.setName(merchant.getName());
+			return merchantRepository.save(existingMerchant);
+		}
+
 		return null;
 	}
 
 	@Override
 	public void deleteMerchant(Long id) {
-		// merchantRepository.deleteById(id);
+		merchantRepository.deleteById(id);
 	}
 
 	public MerchantRepository getMerchantRepository() {
