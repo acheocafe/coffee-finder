@@ -1,7 +1,6 @@
 package br.com.coffeefinder.repository;
 
-import java.util.List;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import br.com.coffeefinder.entity.Product;
 
@@ -10,5 +9,5 @@ import br.com.coffeefinder.entity.Product;
  * I wanna this because i need to cover other type of products not only coffee beans
  * */
 @Repository
-public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }

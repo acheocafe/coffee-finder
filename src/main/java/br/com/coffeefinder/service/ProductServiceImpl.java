@@ -1,44 +1,55 @@
 package br.com.coffeefinder.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 import br.com.coffeefinder.entity.Product;
-import br.com.coffeefinder.interfaces.ProductService;
+/**
+ * ProductServiceImpl
+ */
+import br.com.coffeefinder.repository.ProductRepository;
+import br.com.coffeefinder.service.interfaces.ProductService;
 
 /**
  * ProductServiceImpl
  */
-//implement uniplemented methods of this class
+@Service
 public class ProductServiceImpl implements ProductService {
 
-	@Override
-	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getAllProducts'");
-	}
+    private final ProductRepository productRepository;
 
-	@Override
-	public Product getProductById(Long id) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getProductById'");
-	}
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
-	@Override
-	public Product createProduct(Product product) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'createProduct'");
-	}
+    @Override
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 
-	@Override
-	public Product updateProduct(Product product) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'updateProduct'");
-	}
+    @Override
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
 
-	@Override
-	public void deleteProduct(Long id) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'deleteProduct'");
-	}
+    @Override
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
+    }
 
+    @Override
+    public Product updateProduct(Product product) {
+        Product existingProduct = getProductById(product.getId());
+        if (existingProduct != null) {
+            existingProduct.setName(product.getName());
+            existingProduct.setDescription(product.getDescription());
+            existingProduct.setPrice(product.getPrice());
+            return productRepository.save(existingProduct);
+        }
+        return null;
+    }
 
+    @Override
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
 }

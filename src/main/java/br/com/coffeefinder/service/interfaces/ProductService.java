@@ -1,17 +1,10 @@
-package br.com.coffeefinder.interfaces;
-
-/**
- * ProductService
- */
-
+package br.com.coffeefinder.service.interfaces;
 
 import java.util.List;
 
 /**
  * ProductService
  */
-
-
 import br.com.coffeefinder.entity.Product;
 
 public interface ProductService {
