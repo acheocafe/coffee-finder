@@ -8,34 +8,36 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @Configuration
 @EntityScan(basePackages = "br.com.coffeefinder.entity")
 @EnableJpaRepositories(basePackages = "br.com.coffeefinder.repository")
 @PropertySource("classpath:application.properties")
-
+@EnableTransactionManagement
 class ApplicationConfig {
 
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
+	@Value("${spring.datasource.driver-class-name}")
+	private String driverClassName;
 
-    @Value("${spring.datasource.url}")
-    private String jdbcUrl;
+	@Value("${spring.datasource.url}")
+	private String jdbcUrl;
 
-    @Value("${spring.datasource.username}")
-    private String username;
+	@Value("${spring.datasource.username}")
+	private String username;
 
-    @Value("${spring.datasource.password}")
-    private String password;
+	@Value("${spring.datasource.password}")
+	private String password;
 
-    @Value("${spring.jpa.hibernate.dialect}")
-    private String hibernateDialect;
+	@Value("${spring.jpa.hibernate.dialect}")
+	private String hibernateDialect;
 
 
-    @Bean
-    public DataSource dataSource() {
-        return DataSourceBuilder.create().driverClassName(driverClassName).url(jdbcUrl)
-                .username(username).password(password).build();
-    }
+	@Bean
+	DataSource dataSource() {
+		return DataSourceBuilder.create().driverClassName(driverClassName).url(jdbcUrl)
+					.username(username).password(password).build();
+	}
+
 }

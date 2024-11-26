@@ -164,16 +164,16 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product{"
-				+ "productId="
-				+ id
-				+ ", name="
-				+ name
-				+ ", description="
-				+ description
-				+ ", price="
-				+ price
-				+ ", merchant="
-				+ merchant
-				+ '}';
+					+ "productId="
+					+ id
+					+ ", name="
+					+ name
+					+ ", description="
+					+ description
+					+ ", price="
+					+ price
+					+ ", merchant="
+					+ merchant
+					+ '}';
 	}
 }

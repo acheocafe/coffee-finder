@@ -1,7 +1,5 @@
 package br.com.coffeefinder.exception;
 
-import jakarta.validation.ValidationException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -33,8 +31,9 @@ public class GlobalHandlerException {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Resource not found: " + e.getMessage());
 	}
 
-	@ExceptionHandler(value = ValidationException.class)
-	public ResponseEntity<String> handleValidationException(ValidationException e) {
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Validation failed: " + e.getMessage());
+	@ExceptionHandler(value = MerchantNotFoundException.class)
+	public ResponseEntity<String> handleMerchantNotFoundException(MerchantNotFoundException e) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Merchant not found");
 	}
+
 }

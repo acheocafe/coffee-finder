@@ -222,17 +222,18 @@ public class Location {
 	@Override
 	public String toString() {
 		return "Location [locationId="
-				+ id
-				+ ", address="
-				+ address
-				+ ", city="
-				+ city
-				+ ", state="
-				+ state
-				+ ", postalCode="
-				+ postalCode
-				+ ", country="
-				+ country
-				+ "]";
+					+ id
+					+ ", address="
+					+ address
+					+ ", city="
+					+ city
+					+ ", state="
+					+ state
+					+ ", postalCode="
+					+ postalCode
+					+ ", country="
+					+ country
+					+ "]";
 	}
 }
+
