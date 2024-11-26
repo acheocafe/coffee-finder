@@ -3,6 +3,7 @@ package br.com.coffeefinder.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import br.com.coffeefinder.entity.Merchant;
+import br.com.coffeefinder.exception.EntityNotFoundException;
 import br.com.coffeefinder.exception.MerchantNotFoundException;
 import br.com.coffeefinder.service.interfaces.MerchantService;
 import br.com.coffeefinder.repository.MerchantRepository;
@@ -25,7 +26,7 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	@Override
-	public Merchant getMerchantById(Long id) throws MerchantNotFoundException {
+	public Merchant getMerchantById(Long id) throws MerchantNotFoundException{
 		return merchantRepository.findById(id)
 					.orElseThrow(() -> new MerchantNotFoundException(id));
 	}
@@ -36,7 +37,7 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	@Override
-	public Merchant updateMerchant(Merchant merchant) throws MerchantNotFoundException {
+	public Merchant updateMerchant(Merchant merchant) throws MerchantNotFoundException{
 		Merchant existingMerchant = getMerchantById(merchant.getId());
 		if (existingMerchant != null) {
 			existingMerchant.setName(merchant.getName());
