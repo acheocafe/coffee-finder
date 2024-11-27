@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Merchants</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Coffee Merchants</h1>
+        <div th:each="merchant : ${merchants}" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4" th:text="${merchant.name}"></h2>
+            <p class="mb-4" th:text="${merchant.email}"></p>
+            <h3 class="text-xl font-semibold mb-2">Products</h3>
+            <ul class="list-disc list-inside ml-6">
+                <!-- <li th:each="product : ${merchant.products}" th:text="${product.name}"></li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.coffeefinder.dto.MerchantDto;
 import br.com.coffeefinder.entity.Merchant;
-import br.com.coffeefinder.exception.EntityNotFoundException;
 import br.com.coffeefinder.exception.MerchantNotFoundException;
 import br.com.coffeefinder.service.MerchantServiceImpl;
 import br.com.coffeefinder.service.interfaces.MerchantService;

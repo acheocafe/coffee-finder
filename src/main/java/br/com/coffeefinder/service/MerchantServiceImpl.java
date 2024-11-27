@@ -1,12 +1,13 @@
 package br.com.coffeefinder.service;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import br.com.coffeefinder.entity.Merchant;
-import br.com.coffeefinder.exception.EntityNotFoundException;
 import br.com.coffeefinder.exception.MerchantNotFoundException;
-import br.com.coffeefinder.service.interfaces.MerchantService;
 import br.com.coffeefinder.repository.MerchantRepository;
+import br.com.coffeefinder.service.interfaces.MerchantService;
 
 @Service
 public class MerchantServiceImpl implements MerchantService {

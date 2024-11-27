@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import br.com.coffeefinder.entity.Location;
 import br.com.coffeefinder.entity.Merchant;
+import br.com.coffeefinder.exception.EntityNotFoundException;
 import br.com.coffeefinder.exception.MerchantNotFoundException;
 import br.com.coffeefinder.repository.MerchantRepository;
 
@@ -64,7 +65,7 @@ class MerchantServiceImplTest {
 	}
 
 	@Test
-	void testGetMerchantById() throws MerchantNotFoundException {
+	void testGetMerchantById() throws EntityNotFoundException, MerchantNotFoundException {
 		// Arrange
 		when(merchantRepository.findById(any())).thenReturn(Optional.of(merchant));
 
@@ -88,7 +89,7 @@ class MerchantServiceImplTest {
 	}
 
 	@Test
-	void testUpdateMerchant() throws MerchantNotFoundException {
+	void testUpdateMerchant() throws EntityNotFoundException, MerchantNotFoundException {
 		// Arrange
 		when(merchantRepository.findById(any())).thenReturn(Optional.of(merchant));
 		when(merchantRepository.save(any())).thenReturn(merchant);
@@ -106,7 +107,7 @@ class MerchantServiceImplTest {
 		when(merchantRepository.findById(any())).thenReturn(Optional.empty());
 
 		// Act and Assert
-		assertThrows(MerchantNotFoundException.class, () -> merchantService.updateMerchant(merchant));
+		assertThrows(EntityNotFoundException.class, () -> merchantService.updateMerchant(merchant));
 	}
 
 	void testDeleteMerchant() {

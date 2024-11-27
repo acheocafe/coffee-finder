@@ -1,6 +1,7 @@
 package br.com.coffeefinder.service.interfaces;
 
 import java.util.List;
+
 import br.com.coffeefinder.entity.Merchant;
 import br.com.coffeefinder.exception.MerchantNotFoundException;
 

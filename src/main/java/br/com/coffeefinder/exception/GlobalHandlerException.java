@@ -31,8 +31,8 @@ public class GlobalHandlerException {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Resource not found: " + e.getMessage());
 	}
 
-	@ExceptionHandler(value = MerchantNotFoundException.class)
-	public ResponseEntity<String> handleMerchantNotFoundException(MerchantNotFoundException e) {
+	@ExceptionHandler(value = EntityNotFoundException.class)
+	public ResponseEntity<String> handleMerchantNotFoundException(EntityNotFoundException e) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Merchant not found");
 	}
 

@@ -18,6 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import br.com.coffeefinder.entity.Merchant;
+import br.com.coffeefinder.exception.EntityNotFoundException;
 import br.com.coffeefinder.exception.MerchantNotFoundException;
 import br.com.coffeefinder.service.MerchantServiceImpl;
 
@@ -32,7 +33,7 @@ public class MerchantControllerTest extends ControllerConfig {
 	private ObjectMapper objectMapper = new ObjectMapper();
 
 	@BeforeEach
-	public void setup() throws MerchantNotFoundException {
+	public void setup() throws EntityNotFoundException, MerchantNotFoundException {
 		Merchant merchant = new Merchant(
 					1L,
 					"Tocaya Café",

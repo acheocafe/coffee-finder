@@ -55,7 +55,11 @@ public class Location {
 		this.country = country;
 	}
 
-	/**
+	public Location(Long locationId) {
+		this.id = locationId;
+    }
+
+    /**
 	 Returns the unique identifier of the location.
 
 	 @return the location ID
